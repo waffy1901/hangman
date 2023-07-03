@@ -9,14 +9,18 @@
     <body onload = initializePage()>
         <script src = "hangman.js">
         </script>
-        <h1>Sports</h1>
+        <h1>Sports</h1>       
         <div class = "card"> 
             <button onclick="generateWord()">Generate New Word</button>
             <button><a href = "index.html">Play Again</a></button>
+            <div id = "winningCard">
             <button onclick="getHint()">Hint</button>
+            <p id = "hint"></p>
             <label>Enter a letter:</label>
             <input type="text" id="letterGuess">
             <input type="submit" value="Submit" onclick="guess()">
-            <p>Guessed Letters:</p>
+            <p id = "setup"></p>
+            <p id = "guessedBox">Guessed Letters:</p>
+            </div>
         </div>
     </body>
