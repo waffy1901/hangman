@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    background-image: url("https://www.news10.com/wp-content/uploads/sites/64/2019/12/64f8e970e9174380a5a6145e91160a12-1.jpg?w=1960&h=1440");
+    background-repeat: no-repeat;
+}
+
+.card {
+    margin-right: auto;
+    margin-left: auto;
+    width: 300px;
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0);
+    height: 325px;
+    border-radius: 5px;
+    /* backdrop-filter: blur(5px); */
+    background-color: rgba(255, 255, 255, 0.319);
+    padding: 10px;
+    text-align: center;
+}
