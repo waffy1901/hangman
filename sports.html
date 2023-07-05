@@ -11,16 +11,18 @@
         </script>
         <h1>Sports</h1>       
         <div class = "card"> 
-            <button onclick="generateWord()">Generate New Word</button>
-            <button><a href = "index.html">Play Again</a></button>
-            <div id = "winningCard">
-            <button onclick="getHint()">Hint</button>
-            <p id = "hint"></p>
-            <label>Enter a letter:</label>
-            <input type="text" id="letterGuess">
-            <input type="submit" value="Submit" onclick="guess()">
-            <p id = "setup"></p>
-            <p id = "guessedBox">Guessed Letters:</p>
+            <button><a href = "index.html">Home</a></button>
+            <div id = "endCard">
+                <button onclick="generateWord()">Generate New Word</button>
+                <button onclick="getHint()">Hint</button>
+                <p id = "hint"></p>
+                <p id = "lives">Lives Left: 6</p>
+                <label>Enter a letter:</label>
+                <input type="text" id="letterGuess">
+                <input type="submit" value="Submit" onclick="guess()">
+                <p id = "setup"></p>
+                <p id = "guessedBox">Guessed Letters:</p>
+                <canvas id="hangmanDrawing"></canvas>
             </div>
         </div>
     </body>

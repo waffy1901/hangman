@@ -10,12 +10,24 @@ body {
 .card {
     margin-right: auto;
     margin-left: auto;
-    width: 300px;
+    width: 600px;
     box-shadow: 0 15px 25px rgba(129, 124, 124, 0);
-    height: 325px;
+    height: 600px;
     border-radius: 5px;
-    /* backdrop-filter: blur(5px); */
+    backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.319);
     padding: 10px;
     text-align: center;
+}
+
+canvas {
+    color: white;
+    border: white dashed 2px;
+    height: 400px;
+    width: 600px;
+    /* padding: 15px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin: auto; */
+    /* position: absolute; */
 }

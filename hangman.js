@@ -32,6 +32,8 @@ const hintBank = {"tom brady" : "Quarterback that has won the most SuperBowls",
 
 //regenerate word button
 function generateWord() {
+    numLives = 6
+    document.getElementById("lives").innerHTML = "Lives Left: " + numLives; 
     guessedLetters = [];
     document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
     correctlyGuessedLetters = [];
@@ -57,6 +59,8 @@ function getHint() {
 
 //guess
 function guess() {
+    const canvas = document.getElementById("hangmanDrawing")
+    const drawObject = canvas.getContext("2d");
     var count = document.getElementById("setup").innerText;
     var formattedAnswer = answer.split(" ");
     var currentGuess = document.getElementById("letterGuess").value.toLowerCase();
@@ -67,6 +71,7 @@ function guess() {
     }
     document.getElementById('letterGuess').value = '';
     document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
+    var oldLength = correctlyGuessedLetters.length;
     for (var i = 0; i < formattedAnswer.length; ++i) {
         for (var j = 0; j < formattedAnswer[i].length; ++j) {
             if (formattedAnswer[i][j] === currentGuess) {
@@ -83,17 +88,51 @@ function guess() {
             }
         }
     }
+    if (correctlyGuessedLetters.length === oldLength) {
+        numLives -= 1;
+        document.getElementById("lives").innerHTML = "Lives Left: " + numLives;
+    } 
+    oldLength = correctlyGuessedLetters.length
     document.getElementById("setup").innerText = count;
-    win();
+    endGame();
 }
 
-function win() {
+function endGame() {
     var formattedAnswer = answer.split(" ").join("");
-    if (correctlyGuessedLetters.length === formattedAnswer.length) {
-        document.getElementById("winningCard").innerHTML = "Congratulations, you have successfully avoided being hung!";
+    if (numLives === 0) {
+        document.getElementById("endCard").innerHTML = "You ran out of lives :( Click Home to Play Again!";
     }
+    else if (correctlyGuessedLetters.length === formattedAnswer.length) {
+        document.getElementById("endCard").innerHTML = "Congratulations, you have successfully avoided being hung!";
+    }
+}
+
+function drawHangman() {
+    const canvas = document.getElementById("hangmanDrawing")
+    const drawObject = canvas.getContext("2d");
+    drawObject.fillStyle = "white";
+    drawObject.beginPath();
+    drawObject.rect(20, 132, 200, 10);
+    drawObject.rect(40, 132, 10, -125);
+    drawObject.rect(50, 7, 110, 10);
+    drawObject.rect(130, 17, 5, 15);
+    drawObject.stroke();
+    //draw array starts
+    drawObject.beginPath();
+    drawObject.arc(133, 47, 15, 0, 2 * Math.PI);
+    drawObject.rect(130, 62, 5, 32);
+    drawObject.rotate((45 * Math.PI) / 180);
+    drawObject.rect(145, -60, 5, 22);
+    drawObject.rotate((-90 * Math.PI) / 180)
+    drawObject.rect(37, 127, 5, 22);
+    drawObject.stroke();
+
+    
+
+
 }
 
 function initializePage() {
     generateWord();
+    drawHangman();
 }
