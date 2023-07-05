@@ -1,9 +1,11 @@
 h1 {
     text-align: center;
+    color: white;
+    font-size: 60px;
 }
 
 body {
-    background-image: url("https://www.news10.com/wp-content/uploads/sites/64/2019/12/64f8e970e9174380a5a6145e91160a12-1.jpg?w=1960&h=1440");
+    background-image: url("https://wallpapercave.com/wp/wp2113550.jpg");
     background-repeat: no-repeat;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -15,7 +17,7 @@ body {
     box-shadow: 0 15px 25px rgba(129, 124, 124, 0);
     height: 740px;
     border-radius: 5px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.319);
     padding: 10px;
     text-align: center;
@@ -40,6 +42,7 @@ canvas {
 
 #Home:hover {
     background-color: white;
+    color: #6411AD;
 }
 
 a:visited {
@@ -90,6 +93,7 @@ a {
 
 button {
     cursor: pointer;
+    /* float: left; */
 }
 
 #hint {
@@ -98,6 +102,7 @@ button {
 
 #lives {
     font-size: 20px;
+    font-weight: bold;
 }
 
 #guessedBox {
@@ -106,6 +111,7 @@ button {
 
 label {
     font-size: 20px;
+    font-weight: bold;
 }
 
 #setup {
@@ -116,4 +122,19 @@ label {
     outline: white solid 2px;
     margin-left: 200px;
     margin-right: 200px;
+}
+
+#submit {
+    color: white;
+    background-color: #6411AD;
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+    padding: 7.5px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    color: #6411AD;
+    background-color: white;
 }

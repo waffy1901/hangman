@@ -37,6 +37,7 @@ function generateWord() {
     guessedLetters = [];
     document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
     correctlyGuessedLetters = [];
+    document.getElementById("hint").innerHTML = ""
     if (currentFile === "sports.html") {
         answer = wordBank["Sports"][Math.floor(Math.random() * categories.length)];
     } else if (currentFile === "recondite.html") {
@@ -102,39 +103,47 @@ function endGame() {
     var formattedAnswer = answer.split(" ").join("");
     if (numLives === 0) {
         document.getElementById("endCard").innerHTML = "You ran out of lives :( Click Home to Play Again!";
+        document.getElementById("endCard").style.fontSize = "x-large";
+        document.getElementById("endCard").style.marginTop = "50px"
+        document.getElementById("endCard").style.backgroundColor = "red"
     }
     else if (correctlyGuessedLetters.length === formattedAnswer.length) {
         document.getElementById("endCard").innerHTML = "Congratulations, you have successfully avoided being hung!";
+        document.getElementById("endCard").style.fontSize = "x-large";
+        document.getElementById("endCard").style.marginTop = "50px"
+        document.getElementById("endCard").style.backgroundColor = "green"
     }
 }
 
 function drawHangman() {
     const canvas = document.getElementById("hangmanDrawing")
     const drawObject = canvas.getContext("2d");
-    drawObject.fillStyle = "white";
+    drawObject.fillStyle = "black";
     if (numLives === 6) {
         drawObject.beginPath();
-        drawObject.rect(20, 132, 200, 10);
-        drawObject.rect(40, 132, 10, -125);
-        drawObject.rect(50, 7, 110, 10);
-        drawObject.rect(130, 17, 5, 15);
+        drawObject.fillRect(20, 132, 200, 10);
+        drawObject.fillRect(40, 132, 10, -125);
+        drawObject.fillRect(50, 7, 110, 10);
+        drawObject.fillRect(130, 17, 5, 15);
         drawObject.stroke();
     }
     //draw array starts
+    drawObject.fillStyle = "#48CAE4";
     drawObject.beginPath();
     if (numLives === 5) {
         drawObject.arc(133, 47, 15, 0, 2 * Math.PI);
+        drawObject.fill();
     } else if (numLives === 4) {
-        drawObject.rect(130, 62, 5, 32);
+        drawObject.fillRect(130, 62, 5, 32);
     } else if (numLives === 3) {
         drawObject.rotate((45 * Math.PI) / 180);
-        drawObject.rect(145, -60, 5, 22);
+        drawObject.fillRect(145, -60, 5, 22);
     } else if (numLives === 2) {
         drawObject.rotate((-90 * Math.PI) / 180)
-        drawObject.rect(37, 127, 5, 22);
+        drawObject.fillRect(37, 127, 5, 22);
     } else if (numLives === 1) {
         drawObject.rotate((-90 * Math.PI) / 180)
-        drawObject.rect(-159, 9, 5, 22);
+        drawObject.fillRect(-159, 9, 5, 22);
     }
     drawObject.stroke();
 }
@@ -143,3 +152,11 @@ function initializePage() {
     generateWord();
     drawHangman();
 }
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }

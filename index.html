@@ -9,17 +9,26 @@
     <body onload = initializePage()>
         <script src = "hangman.js">
         </script>
-        <h1>Hangman</h1>
+        <h1>Welcome to Hangman</h1>
         <h2>Choose Your Category</h2>
-        <h3>Rules</h3>
-        <p>Welcome to Hangman! First choose a category to get started. You will then be redirected
-            to a screen dependent on the category you chose. You will then have 6 lives to guess the
-            word letter by letter. Every letter you guess that is not in the word will cost you a
-            life. Don't worry if you get stuck, you can ask for a hint by clicking on the Hint button 
-            Click to regenerate a new word if you want to stay in the same category or click Play 
-            Again to be brought back to the home screen. Good luck and have fun :) 
-        </p>
         <button><a href = "sports.html">Sports</a></button>
         <button><a href = "recondite.html">Recondite Knowledge</a></button>
         <button><a href = "places.html">Places</a></button>
+        <br> <br>
+        <button class = "Rules" onclick="openForm()">View Rules</button>
+        <div class = "ruleInfo" id = "myForm">
+            <form>
+                <p>Welcome to Hangman! First choose a category to get started. You will then be redirected
+                    to a screen dependent on the category you chose. You will then have 6 lives to guess the
+                    word letter by letter. Every letter you guess that is not in the word will cost you a
+                    life. Don't worry if you get stuck, you can ask for a hint by clicking on the Hint button. 
+                    Click to regenerate a new word if you want to stay in the same category or click Home to 
+                    be brought back to the home screen. Good luck and have fun :) 
+                </p>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close Rules</button>
+            </form>
+            
+        </div>
+        
+        
     </body>

@@ -1,0 +1,145 @@
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 60px;
+}
+
+body {
+    background-image: url("https://www.georgiaencyclopedia.org/wp-content/uploads/2021/02/berry-college_003.jpg");
+    background-repeat: no-repeat;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.card {
+    margin-right: auto;
+    margin-left: auto;
+    width: 800px;
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0);
+    height: 800px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.319);
+    padding: 10px;
+    text-align: center;
+}
+
+canvas {
+    color: white;
+    border: white solid 2px;
+    height: 400px;
+    width: 600px;
+}
+
+#Home {
+    color: white;
+    background-color: #6411AD;
+    border-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 7.5px;
+    margin-bottom: 10px;
+}
+
+#Home:hover {
+    background-color: white;
+    color: #6411AD;
+}
+
+a:visited {
+    color: white;
+}
+
+a:link {
+    color: white;
+}
+
+a:hover {
+    color: #6411AD;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+#word {
+    color: white;
+    background-color: #6411AD;
+    border-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 7.5px;
+    margin-right: 10px;
+}
+
+#word:hover {
+    color: #6411AD;
+    background-color: white;
+}
+
+#hintButton {
+    color: white;
+    background-color: #6411AD;
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+    padding: 7.5px;
+}
+
+#hintButton:hover {
+    color: #6411AD;
+    background-color: white;
+}
+
+button {
+    cursor: pointer;
+    /* float: left; */
+}
+
+#hint {
+  font-size: 20px;
+}
+
+#lives {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#guessedBox {
+    font-size: 20px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#setup {
+    font-size: 36px;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    outline: white solid 2px;
+    margin-left: 160px;
+    margin-right: 200px;
+}
+
+#submit {
+    color: white;
+    background-color: #6411AD;
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+    padding: 7.5px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    color: #6411AD;
+    background-color: white;
+} 
+
+#endCard {
+    font-size: 60px;
+}

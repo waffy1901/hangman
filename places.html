@@ -9,5 +9,20 @@
     <body onload = initializePage()>
         <script src = "hangman.js">
         </script>
-        <h1>Places</h1>
+        <h1>Places</h1>       
+        <div class = "card"> 
+            <button id = "Home"><a href = "index.html">Home</a></button>
+            <div id = "endCard">
+                <button id = "word" onclick="generateWord()">Generate New Word</button>
+                <button id = "hintButton" onclick="getHint()">Hint</button>
+                <p id = "hint"></p>
+                <p id = "lives">Lives Left: 6</p>
+                <label>Enter a letter:</label>
+                <input type="text" id="letterGuess">
+                <input type="submit" value="Submit" onclick="guess()" id = "submit">
+                <p id = "setup"></p>
+                <p id = "guessedBox">Guessed Letters:</p>
+                <canvas id="hangmanDrawing"></canvas>
+            </div>
+        </div>
     </body>
