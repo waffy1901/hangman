@@ -1,25 +1,15 @@
-//alphabet
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-// array of letters guessed correctly
 var correctlyGuessedLetters = [];
-//number of lives
 var numLives = 6;
-//Current File
 var currentFile = window.location.pathname.split("/").pop();
-//guessed letters
 var guessedLetters = [];
-//Current generated word
 var answer;
-//word_bank
 const wordBank = {"Sports": ["tom brady", "celtics", "lebron james"], 
 "Recondite Knowledge": ["jennifer lopez", "blue whale", "ostrich"], 
 "Places": ["mongolia", "vatican city", "machu picchu"]};
-//word length
-//categories
-const categories = ["Sports", "Recondite Knowledge", "Places"]
-//hint bank
+const categories = ["Sports", "Recondite Knowledge", "Places"];
 const hintBank = {"tom brady" : "Quarterback that has won the most SuperBowls", 
 "celtics" : "Franchise that has won the most NBA championships",
 "lebron james" : "The NBA's all-time leading scorer", 
@@ -28,16 +18,16 @@ const hintBank = {"tom brady" : "Quarterback that has won the most SuperBowls",
 "ostrich" : "This animal has eyes bigger than its brain",
 "mongolia" : "The world's sparsest population",
 "vatican city" : "This country is 120 times smaller than Manhattan",
-"machu picchu" : "This place very well-preserved and is 75% its original"}
+"machu picchu" : "This place very well-preserved and is 75% its original"};
 
-//regenerate word button
+// generates a new word
 function generateWord() {
-    numLives = 6
+    numLives = 6;
     document.getElementById("lives").innerHTML = "Lives Left: " + numLives; 
     guessedLetters = [];
     document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
     correctlyGuessedLetters = [];
-    document.getElementById("hint").innerHTML = ""
+    document.getElementById("hint").innerHTML = "";
     if (currentFile === "sports.html") {
         answer = wordBank["Sports"][Math.floor(Math.random() * categories.length)];
     } else if (currentFile === "recondite.html") {
@@ -53,24 +43,24 @@ function generateWord() {
     document.getElementById("setup").innerText = append; 
 }
 
-//hint button
+// prints a hint for the according answer
 function getHint() {
     document.getElementById("hint").innerHTML = "Hint: " + hintBank[answer];
 }
 
-//guess
+// handles valid/invalid guesses
 function guess() {
-    const canvas = document.getElementById("hangmanDrawing")
-    const drawObject = canvas.getContext("2d");
     var count = document.getElementById("setup").innerText;
     var formattedAnswer = answer.split(" ");
     var currentGuess = document.getElementById("letterGuess").value.toLowerCase();
     if (guessedLetters.includes(currentGuess)) {
         alert("You've already guessed this letter. Try Again!")
+    } else if (!alphabet.includes(currentGuess)) {
+        alert("Invalid input - please enter one letter at a time!");
     } else {
         guessedLetters.push(currentGuess);
     }
-    document.getElementById('letterGuess').value = '';
+    document.getElementById("letterGuess").value = "";
     document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
     var oldLength = correctlyGuessedLetters.length;
     for (var i = 0; i < formattedAnswer.length; ++i) {
@@ -90,11 +80,11 @@ function guess() {
         }
     }
     if (correctlyGuessedLetters.length === oldLength) {
-        numLives -= 1;
+        numLives--;
         drawHangman();
         document.getElementById("lives").innerHTML = "Lives Left: " + numLives;
     } 
-    oldLength = correctlyGuessedLetters.length
+    oldLength = correctlyGuessedLetters.length;
     document.getElementById("setup").innerText = count;
     endGame();
 }
@@ -104,19 +94,19 @@ function endGame() {
     if (numLives === 0) {
         document.getElementById("endCard").innerHTML = "You ran out of lives :( Click Home to Play Again!";
         document.getElementById("endCard").style.fontSize = "x-large";
-        document.getElementById("endCard").style.marginTop = "50px"
-        document.getElementById("endCard").style.backgroundColor = "red"
-    }
-    else if (correctlyGuessedLetters.length === formattedAnswer.length) {
+        document.getElementById("endCard").style.marginTop = "50px";
+        document.getElementById("endCard").style.backgroundColor = "red";
+    } else if (correctlyGuessedLetters.length === formattedAnswer.length) {
         document.getElementById("endCard").innerHTML = "Congratulations, you have successfully avoided being hung!";
         document.getElementById("endCard").style.fontSize = "x-large";
-        document.getElementById("endCard").style.marginTop = "50px"
-        document.getElementById("endCard").style.backgroundColor = "green"
+        document.getElementById("endCard").style.marginTop = "50px";
+        document.getElementById("endCard").style.backgroundColor = "green";
     }
 }
 
+// draw hangman in iterations proportional to the number of lives remaining
 function drawHangman() {
-    const canvas = document.getElementById("hangmanDrawing")
+    const canvas = document.getElementById("hangmanDrawing");
     const drawObject = canvas.getContext("2d");
     drawObject.fillStyle = "black";
     if (numLives === 6) {
@@ -139,10 +129,10 @@ function drawHangman() {
         drawObject.rotate((45 * Math.PI) / 180);
         drawObject.fillRect(145, -60, 5, 22);
     } else if (numLives === 2) {
-        drawObject.rotate((-90 * Math.PI) / 180)
+        drawObject.rotate((-90 * Math.PI) / 180);
         drawObject.fillRect(37, 127, 5, 22);
     } else if (numLives === 1) {
-        drawObject.rotate((-90 * Math.PI) / 180)
+        drawObject.rotate((-90 * Math.PI) / 180);
         drawObject.fillRect(-159, 9, 5, 22);
     }
     drawObject.stroke();
@@ -155,8 +145,8 @@ function initializePage() {
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
-  }
+}
   
-  function closeForm() {
+function closeForm() {
     document.getElementById("myForm").style.display = "none";
-  }
+}
