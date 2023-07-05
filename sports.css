@@ -5,14 +5,15 @@ h1 {
 body {
     background-image: url("https://www.news10.com/wp-content/uploads/sites/64/2019/12/64f8e970e9174380a5a6145e91160a12-1.jpg?w=1960&h=1440");
     background-repeat: no-repeat;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .card {
     margin-right: auto;
     margin-left: auto;
-    width: 600px;
+    width: 740px;
     box-shadow: 0 15px 25px rgba(129, 124, 124, 0);
-    height: 600px;
+    height: 740px;
     border-radius: 5px;
     backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.319);
@@ -22,12 +23,97 @@ body {
 
 canvas {
     color: white;
-    border: white dashed 2px;
+    border: white solid 2px;
     height: 400px;
     width: 600px;
-    /* padding: 15px; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* margin: auto; */
-    /* position: absolute; */
+}
+
+#Home {
+    color: white;
+    background-color: #6411AD;
+    border-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 7.5px;
+    margin-bottom: 10px;
+}
+
+#Home:hover {
+    background-color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:link {
+    color: white;
+}
+
+a:hover {
+    color: #6411AD;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+#word {
+    color: white;
+    background-color: #6411AD;
+    border-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 7.5px;
+    margin-right: 10px;
+}
+
+#word:hover {
+    color: #6411AD;
+    background-color: white;
+}
+
+#hintButton {
+    color: white;
+    background-color: #6411AD;
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+    padding: 7.5px;
+}
+
+#hintButton:hover {
+    color: #6411AD;
+    background-color: white;
+}
+
+button {
+    cursor: pointer;
+}
+
+#hint {
+  font-size: 20px;
+}
+
+#lives {
+    font-size: 20px;
+}
+
+#guessedBox {
+    font-size: 20px;
+}
+
+label {
+    font-size: 20px;
+}
+
+#setup {
+    font-size: 36px;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    outline: white solid 2px;
+    margin-left: 200px;
+    margin-right: 200px;
 }
