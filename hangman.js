@@ -24,6 +24,7 @@ const hintBank = {"tom brady" : "Quarterback that has won the most SuperBowls",
 function generateWord() {
     numLives = 6;
     document.getElementById("lives").innerHTML = "Lives Left: " + numLives; 
+    drawHangman();
     guessedLetters = [];
     document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
     correctlyGuessedLetters = [];
@@ -53,40 +54,41 @@ function guess() {
     var count = document.getElementById("setup").innerText;
     var formattedAnswer = answer.split(" ");
     var currentGuess = document.getElementById("letterGuess").value.toLowerCase();
-    if (guessedLetters.includes(currentGuess)) {
-        alert("You've already guessed this letter. Try Again!")
-    } else if (!alphabet.includes(currentGuess)) {
+    if (!alphabet.includes(currentGuess)) {
         alert("Invalid input - please enter one letter at a time!");
+    } else if (guessedLetters.includes(currentGuess)) {
+        alert("You've already guessed this letter. Try Again!")
     } else {
         guessedLetters.push(currentGuess);
-    }
-    document.getElementById("letterGuess").value = "";
-    document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
-    var oldLength = correctlyGuessedLetters.length;
-    for (var i = 0; i < formattedAnswer.length; ++i) {
-        for (var j = 0; j < formattedAnswer[i].length; ++j) {
-            if (formattedAnswer[i][j] === currentGuess) {
-                if (i === 0) {
-                    var firstPart = count.substring(0, j * 2);
-                    var secondPart = count.substring((j * 2) + 1);
-                    count = firstPart + currentGuess + secondPart;
-                } else if (i === 1) {
-                    var firstPart = count.substring(0, (j * 2) + 4 + (formattedAnswer[0].length * 2));
-                    var secondPart = count.substring((j * 2) + 4 + (formattedAnswer[0].length * 2) + 1);
-                    count = firstPart + currentGuess + secondPart;
+    
+        document.getElementById("letterGuess").value = "";
+        document.getElementById("guessedBox").innerHTML = "Guessed Letters: " + guessedLetters;
+        var oldLength = correctlyGuessedLetters.length;
+        for (var i = 0; i < formattedAnswer.length; ++i) {
+            for (var j = 0; j < formattedAnswer[i].length; ++j) {
+                if (formattedAnswer[i][j] === currentGuess) {
+                    if (i === 0) {
+                        var firstPart = count.substring(0, j * 2);
+                        var secondPart = count.substring((j * 2) + 1);
+                        count = firstPart + currentGuess + secondPart;
+                    } else if (i === 1) {
+                        var firstPart = count.substring(0, (j * 2) + 4 + (formattedAnswer[0].length * 2));
+                        var secondPart = count.substring((j * 2) + 4 + (formattedAnswer[0].length * 2) + 1);
+                        count = firstPart + currentGuess + secondPart;
+                    }
+                    correctlyGuessedLetters.push(currentGuess);
                 }
-                correctlyGuessedLetters.push(currentGuess);
             }
         }
+        if (correctlyGuessedLetters.length === oldLength) {
+            numLives--;
+            drawHangman();
+            document.getElementById("lives").innerHTML = "Lives Left: " + numLives;
+        } 
+        oldLength = correctlyGuessedLetters.length;
+        document.getElementById("setup").innerText = count;
+        endGame();
     }
-    if (correctlyGuessedLetters.length === oldLength) {
-        numLives--;
-        drawHangman();
-        document.getElementById("lives").innerHTML = "Lives Left: " + numLives;
-    } 
-    oldLength = correctlyGuessedLetters.length;
-    document.getElementById("setup").innerText = count;
-    endGame();
 }
 
 function endGame() {
@@ -110,6 +112,7 @@ function drawHangman() {
     const drawObject = canvas.getContext("2d");
     drawObject.fillStyle = "black";
     if (numLives === 6) {
+        drawObject.clearRect(0, 0, 600, 400);
         drawObject.beginPath();
         drawObject.fillRect(20, 132, 200, 10);
         drawObject.fillRect(40, 132, 10, -125);
